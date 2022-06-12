@@ -10,6 +10,9 @@ const DumpSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        password: {
+            type: String
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'user'
@@ -20,7 +23,18 @@ const DumpSchema = mongoose.Schema(
             uppercase: true,
             default: 'UNL'
         },
-         
+        has_expiration_date: {
+            type: Boolean,
+            default: false
+        },
+        expiration_date: {
+            type: Date,
+            default: () => {
+                let oneYearFromNow = new Date();
+                oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+                return oneYearFromNow;
+            }
+        },
         slug: {
             type: String,
             required: true

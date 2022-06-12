@@ -8,6 +8,16 @@ import { logout } from "../../actions/auth";
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <Fragment>
+      <li className="nav-item">
+        <NavLink
+          activeClassName="active"
+          to="/dashboard"
+          className="btn btn-primary"
+        >
+          <i className="far fa-tachometer-alt-fast" />
+          &nbsp;&nbsp;Dashboard
+        </NavLink>
+      </li>
       <li className="nav-item dropdown">
         <a
           className="nav-link dropdown-toggle"
@@ -65,11 +75,36 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     <nav className="navbar navbar-expand-sm navbar-dark bg-primary mb-5">
       <div className="container">
         <Link className="navbar-brand" to="/">
-          <span style={{ fontWeight: "bold" }}>Paste</span>
-          <span className="text-info">library</span>
+          <span style={{ fontWeight: "bold" }}>Pastify</span>
+          <span className="text-info"></span>
         </Link>
 
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          {/* <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                            <NavLink activeClassName="active" className="nav-link" to="/about">
+                                About
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink activeClassName="active" className="nav-link" to="/contact-us">
+                                Contact us
+                            </NavLink>
+                        </li>
+                    </ul> */}
+
           <ul className="navbar-nav ml-auto">
             {!loading && (
               <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
