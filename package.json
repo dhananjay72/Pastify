@@ -1,14 +1,15 @@
 {
-    "name": "paste-library",
+    "name": "pastify",
     "version": "1.0.0",
     "description": "an utility that will allow user to paste their text and access them from any device using just an url.",
     "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+    "scripts": {
+        "start": "node server",
+        "server": "nodemon server",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    },
     "repository": {
         "type": "git",
         "url": "pastify"
